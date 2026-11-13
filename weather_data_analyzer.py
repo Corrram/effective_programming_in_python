@@ -3,6 +3,15 @@
 
 def analyze_weather_data(data, analysis_type):
     """Analyze a list of daily records such as {"date": ..., "temperature": ..., "humidity": ...}."""
+    if not isinstance(data, list):
+        raise TypeError("The data parameter must be a list!")
+    if not isinstance(analysis_type, str):
+        raise TypeError("The analysis_type parameter must be a string!")
+    if analysis_type not in ["average", "max", "min"]:
+        raise ValueError("analysis_type must be 'average', 'max' or 'min'!")
+    if not data:
+        raise ValueError("The data parameter must not be empty!")
+
     if analysis_type == "average":
         total_temp = sum(item["temperature"] for item in data)
         total_humidity = sum(item["humidity"] for item in data)
