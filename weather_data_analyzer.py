@@ -17,3 +17,7 @@ def analyze_weather_data(data, analysis_type):
     elif analysis_type == "min":
         min_temp_day = min(data, key=lambda x: x["temperature"])
         return {"min_temperature_date": min_temp_day["date"]}
+
+    elif analysis_type == "trend":
+        temperatures = [item["temperature"] for item in data]
+        return {"temperature_change": temperatures[-1] - temperatures[0]}
