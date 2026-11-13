@@ -3,6 +3,9 @@
 
 def analyze_weather_data(data, analysis_type):
     """Analyze a list of daily records such as {"date": ..., "temperature": ..., "humidity": ...}."""
+    if not data:
+        return {}
+
     if analysis_type == "average":
         total_temp = sum(item["temperature"] for item in data)
         total_humidity = sum(item["humidity"] for item in data)
